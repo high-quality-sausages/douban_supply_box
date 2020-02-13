@@ -1,8 +1,9 @@
-import string
 import ssl
+import string
 import urllib
 import urllib.request
 import urllib.parse
+
 from bs4 import BeautifulSoup
 
 
@@ -76,9 +77,9 @@ def find_sid(raw_str: str) -> str:
     assert type(raw_str) == str, \
         '''the type of raw_str must be str'''
     start_index = raw_str.find('sid:')
-    result = raw_str[start_index + 5: start_index + 13]
-    result.strip(',')
-    return result
+    sid = raw_str[start_index + 5: start_index + 13]
+    sid.strip(',')
+    return sid
 
 
 if __name__ == "__main__":
