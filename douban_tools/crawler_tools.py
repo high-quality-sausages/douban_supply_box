@@ -77,6 +77,7 @@ def find_sid(raw_str: str) -> str:
     '''
     assert type(raw_str) == str, \
         '''the type of raw_str must be str'''
+
     start_index = raw_str.find('sid:')
     sid = raw_str[start_index + 5: start_index + 13]
     sid.strip(',')
@@ -84,5 +85,6 @@ def find_sid(raw_str: str) -> str:
 
 
 if __name__ == "__main__":
-    raw_str = get_content('1001', '看见')
+    raw_str = get_content(keyword='看见', kind='书籍')
+    print(raw_str)
     print(find_sid(raw_str))
