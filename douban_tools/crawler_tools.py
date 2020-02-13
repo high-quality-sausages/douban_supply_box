@@ -69,10 +69,11 @@ def get_content(keyword: str, kind: str) -> str:
 
 def find_sid(raw_str: str) -> str:
     '''
-        Args:
-            raw_str: a html info string contains sid
-        Returns:
-            sid
+    find sid in raw_str
+    Args:
+        raw_str: a html info string contains sid
+    Returns:
+        sid
     '''
     assert type(raw_str) == str, \
         '''the type of raw_str must be str'''
