@@ -5,9 +5,9 @@ import urllib.parse
 from bs4 import BeautifulSoup
 
 
-def creat_url(name, num):
+def creat_url(num, name):
     #    movie_url = 'https://search.douban.com/movie/subject_search?search_text=%'+name+'&cat=1002'
-    book_url = 'https://www.douban.com/search?cat='+num+'&q='+name+''
+    book_url = 'https://www.douban.com/search?cat='+str(num)+'&q='+str(name)+''
     return book_url
     # 电影 1002
     # 读书 1001
@@ -22,6 +22,7 @@ def get_html(url):
     }
 
     s = urllib.parse.quote(url, safe=string.printable)  # safe表示可以忽略的部分
+    print('正在爬取：'+s)
     req = urllib.request.Request(url=s, headers=headers)
     req = urllib.request.urlopen(req)
     content = req.read().decode('utf-8')
@@ -33,12 +34,8 @@ def get_content(num, name):
     html = get_html(url)
     # print(html)
     soupContent = BeautifulSoup(html, 'html.parser')
-    contents = soupContent.find_all('h3 ', limit=1)
+    contents = soupContent.find_all('h3', limit=1)
     print(contents)
 
 
-def main():
-    get_content('1001', '看见')
-
-
-main()
+get_content('1001', '看见')
